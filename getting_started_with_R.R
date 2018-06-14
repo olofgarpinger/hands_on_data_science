@@ -1,6 +1,7 @@
 # Code by Olof Rännbäck-Garpinger 20180614, Knightec AB
 
-# Install the tidyverse packages unless you already have: install.packages("tidyverse")
+# Install the tidyverse packages unless you already have: 
+# install.packages("tidyverse")
 
 # To run code, select one or several lines of code and press "Ctrl + Enter" 
 
@@ -39,13 +40,6 @@ train_mutated = mutate(train_filtered,
                       timestamp_first_active = ymd_hms(timestamp_first_active))
 train_mutated
 
-# Calculations over groups using group_by and summarise
-train_group_by = group_by(train_mutated, gender)
-train_summarised = summarise(train_group_by,
-                            mean_age = mean(age),
-                            count = n())
-train_summarised
-
 
 ### Visualizations with ggplot2 ###
 
@@ -68,6 +62,14 @@ ggplot(data = train_filtered) +
 
 
 # Bonus for those interested: #
+
+# Calculations over groups using group_by and summarise
+# Calculate the average ages over the gender groups
+train_group_by = group_by(train_mutated, gender)
+train_summarised = summarise(train_group_by,
+                             mean_age = mean(age),
+                             count = n())
+train_summarised
 
 ### Pipelining with the pipe %>% ###
 
